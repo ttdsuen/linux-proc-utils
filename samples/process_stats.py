@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-
 from linux.proc.swap import *
 from linux.proc.fd import *
 
@@ -31,7 +30,7 @@ def output(stats, titles, widths, justifications, stop):
 
 
 if __name__ == '__main__':
-    swap_stats = proc_swap_usage()
+    swap_stats = swap_usage()
 
     for stat in swap_stats:
         stat['num_fds'] = proc_fd_usage(stat['pid'])
@@ -45,7 +44,7 @@ if __name__ == '__main__':
 
     print('\n\n\n')
 
-    fd_stats = proc_fd_usage()
+    fd_stats = fd_usage()
     fd_widths = [ len(x) for x in fd_titles ]
     for item in fd_stats:
         for i, title in enumerate(fd_titles):
