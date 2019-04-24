@@ -34,8 +34,8 @@ swap metrics. `swap_total()` returns a `float`, and so is `swap_free()`.
 If the value cannot be fetched due to missing attributes in the target
 file(s) under `/proc`, the returned values will be None.
 
-If a value that requires conversion is fetched with the unit stated
-in the target file(s) under `/proc` is not supported, i.e. not one of
+For values with byte units (kb, mb, for instance) in the
+target file(s) under `/proc`, if the unit is not supported, i.e. not one of
 the followings: kb, gb, tb, pb, ub, a RuntimeError exception is
 raised. So is the case where the target file(s) do not exist. The last
 case only happens (exception being raised) if the operation is not an
@@ -45,3 +45,33 @@ aggregate operations (operate on a set of processes for instance).
 Some functions would require super-user access to run. Noticably
 those related to file descriptors.
 
+
+You can always see the documentation through regular Python ```help()```.
+For instance,
+
+```
+Python 3.6.7 (default, Oct 22 2018, 11:32:17) 
+[GCC 8.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import linux.proc.fd
+>>> help(linux.proc.fd)
+
+elp on module linux.proc.fd in linux.proc:
+
+NAME
+    linux.proc.fd - Linux /proc File Descriptor Module
+
+DESCRIPTION
+    This module supports querying related to file descriptors
+
+FUNCTIONS
+    fd_usage()
+        Returns a list of process file descript...
+...
+
+```
+
+## License
+
+This project is licensed under the MIT License - see the
+[LICENSE.md](LICENSE.md) file for details
