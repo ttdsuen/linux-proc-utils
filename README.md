@@ -3,10 +3,9 @@ Python3 module provides an API to facilitate reading run-time information from L
 
 ## Getting Started
 
-It's best to go through some examples. There are other sample scripts in
+It's best to go through an example. There is a usable sample script in
 the `samples/` directory.
 
-1. Fetch system swap total:
 
 ```
 import linux.proc.swap
@@ -32,21 +31,22 @@ except RuntimeException as e:
 The module `linux.proc.swap` is imported on line 1 as we are querying
 swap metrics. `swap_total()` returns a `float`, and so is `swap_free()`.
 If the value cannot be fetched due to missing attributes in the target
-file(s) under `/proc`, the returned values will be None.
+file(s) under `/proc`, the values returned will be None. If the target
+file(s) are missing in `proc`, a RuntimeError exception is raised.
 
 For values with byte units (kb, mb, for instance) in the
 target file(s) under `/proc`, if the unit is not supported, i.e. not one of
 the followings: kb, gb, tb, pb, ub, a RuntimeError exception is
-raised. So is the case where the target file(s) do not exist. The last
-case only happens (exception being raised) if the operation is not an
-aggregate operations (operate on a set of processes for instance).
+raised.
 
+As processes come and go, when using `swap_usage()` and `fd_usage()`,
+no RuntimeError exception is raised if some target processes are no longer
+present during the run.
 
 Some functions would require super-user access to run. Noticably
 those related to file descriptors.
 
-
-You can always see the documentation through regular Python ```help()```.
+You can always read the documentation through regular Python ```help()```.
 For instance,
 
 ```
