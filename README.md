@@ -31,8 +31,8 @@ except RuntimeException as e:
 The module `linux.proc.swap` is imported on line 1 as we are querying
 swap metrics. `swap_total()` returns a `float`, and so is `swap_free()`.
 If the value cannot be fetched due to missing attributes in the target
-file(s) under `/proc`, the values returned will be None. If the target
-file(s) are missing in `proc`, a RuntimeError exception is raised.
+file (in this case `/proc/meminfo`) under `/proc`, the values returned will be None.
+If the target file is missing in `/proc`, a RuntimeError exception is raised.
 
 For values with byte units (kb, mb, for instance) in the
 target file(s) under `/proc`, if the unit is not supported, i.e. not one of
@@ -41,7 +41,7 @@ raised.
 
 As processes come and go, when using `swap_usage()` and `fd_usage()`,
 no RuntimeError exception is raised if some target processes are no longer
-present during the run.
+present under `/proc` during the run.
 
 Some functions would require super-user access to run. Noticably
 those related to file descriptors.
