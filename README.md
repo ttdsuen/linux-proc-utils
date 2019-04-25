@@ -46,6 +46,12 @@ present under `/proc` during the run.
 Some functions would require super-user access to run. Noticably
 those related to file descriptors.
 
+The script `process_stats.py` is a usable script based on this module
+that shows processes in descending order of either swap or file descriptor usage.
+By studying this script, it should be fairly straightforward to
+create your own reporting.
+
+
 You can always read the documentation through regular Python ```help()```.
 For instance,
 
